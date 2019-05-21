@@ -13,7 +13,7 @@ $ npm i @attractor/micro-mongoose --save
 ```js
 const {send} = require('micro')
 const {Schema} = require('mongoose')
-const withMongoose = require('@attractor/micro-mongoose')
+const microMongoose = require('@attractor/micro-mongoose')
 
 const models = {
     User: {
@@ -31,12 +31,14 @@ const models = {
     }
 }
 
+const withMongoose = microMongoose({ models, database: 'mydb', branching: true })
+
 const handler = async (req, res, { User }) => {
     const user = await User.findOne()
     send(res, 200, user)
 }
 
-module.exports = withMongoose({ models, database: 'mydb', branching: true }, handler)
+module.exports = withMongoose(handler)
 ```
 
 and run locally via

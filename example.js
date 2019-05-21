@@ -1,6 +1,6 @@
 const {send} = require('micro')
 const {Schema} = require('mongoose')
-const withMongoose = require('./')
+const microMongoose = require('./')
 
 const models = {
     User: {
@@ -18,9 +18,11 @@ const models = {
     }
 }
 
+const withMongoose = microMongoose({ models, database: 'mydb', branching: true })
+
 const handler = async (req, res, { User }) => {
     const user = await User.findOne()
     send(res, 200, user)
 }
 
-module.exports = withMongoose({ models, database: 'mydb', branching: true }, handler)
+module.exports = microMongoose(handler)

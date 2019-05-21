@@ -22,7 +22,7 @@ const exportModels = (models) => {
     return map;
 }
 
-const withMongoose = (options, handler) => async (req, res, ...args) => {
+const withMongoose = (options = {}) => handler => async (req, res, ...restArgs) => {
     const state = mongoose.STATES[mongoose.connection.readyState];
     const connected = state == "connected";
 
@@ -42,9 +42,9 @@ const withMongoose = (options, handler) => async (req, res, ...args) => {
         }
     }
 
-    args.push(exportModels(options.models))
+    restArgs.push(exportModels(options.models))
 
-    return handler(req, res, ...args)
+    return handler(req, res, ...restArgs)
 }
 
 module.exports = withMongoose;
