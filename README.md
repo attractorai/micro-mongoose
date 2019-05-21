@@ -5,7 +5,7 @@ A simple package that allows you to use mongoose with micro.
 ## Installation
 
 ```sh
-$ npm i @attractor/micro-mongoose
+$ npm i @attractor/micro-mongoose --save
 ```
 
 ## Usage
@@ -39,12 +39,14 @@ const handler = async (req, res, { User }) => {
 module.exports = withMongoose({ models, database: 'mydb', branching: true }, handler)
 ```
 
+and run locally via
+
 ```sh
 
 $ MONGO_HOST=mongodb://localhost node index.js
 ```
 
-or with `now`
+or deploy with ZEIT's `now`
 
 ```sh
 
@@ -59,5 +61,5 @@ Exported method `withMongoose` consists of 2 arguments: options and handler.
  * `options` is an object that has following parameters:
     * `models` an object containing a properly formatted dictionary of mongoose schemes
     * `database` string with database name
-    * `branching` in case you are using zeit's `now`, you can enable branching so prefixes would be added to the database names;
+    * `branching` in case you are using ZEIT's `now`, you can enable branching so prefixes would be added to the database names;
         On a now deployment from master branch prefix will be `live-`, in any other case prefix will be `staging-`.
