@@ -1,0 +1,27 @@
+{
+  "name": "@attractor/micro-mongoose",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/attractorai/micro-mongoose.git"
+  },
+  "scripts": {
+    "dev": "micro-dev example.js"
+  },
+  "keywords": [
+    "micro",
+    "mongoose",
+    "mongo"
+  ],
+  "author": "inlife",
+  "license": "MIT",
+  "peerDependencies": {
+    "mongoose": "5.4.*",
+    "micro": "^9.3.4"
+  },
+  "devDependencies": {
+    "micro-dev": "^3.0.0"
+  }
+}
