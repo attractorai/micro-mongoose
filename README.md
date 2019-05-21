@@ -57,11 +57,7 @@ now -e MONGO_HOST=mongodb://someremote.mongodb.host:11111
 
 ## Details
 
-Exported method `withMongoose` consists of 2 arguments: options and handler.
-
- * `handler` is the micro function that you will use to handle the http request with.
- * `options` is an object that has following parameters:
-    * `models` an object containing a properly formatted dictionary of mongoose schemes
-    * `database` string with database name
-    * `branching` in case you are using ZEIT's `now`, you can enable branching so prefixes would be added to the database names;
-        On a now deployment from master branch prefix will be `live-`, in any other case prefix will be `staging-`.
+Exported method `withMongoose` has the following options:
+* `models` an object containing a properly formatted dictionary of mongoose schemes
+* `database` string with database name
+* `branching` in case you are using ZEIT's `now`, you can enable branching so prefixes would be added to the database names; Any given deployment from `master` branch will have a `live-` prefixed added to the database name, in any other case prefix will be `staging-`.
